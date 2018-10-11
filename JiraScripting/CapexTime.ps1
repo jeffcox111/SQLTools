@@ -20,8 +20,9 @@ function Update-Database([WorkLogEntry]$entry)
 
     $sqlconn.Close()
 }
+$filename = "September2018.csv"
 
-$StreamReader = New-Object System.IO.StreamReader -Arg "timetracking.csv"
+$StreamReader = New-Object System.IO.StreamReader -Arg $filename
 [array]$Headers = $StreamReader.ReadLine() -Split "," | % { "$_".Trim() } | ? { $_ }
 $StreamReader.Close()
 
@@ -41,7 +42,7 @@ For ($i=1; $i -lt $Headers.Count; $i++)
     }
 }
 
-$rawData = Import-Csv "timetracking.csv" -Header $Headers
+$rawData = Import-Csv $filename -Header $Headers
 
 $relevantHeaders = $Headers | ? {$_ -match "Log Work?" }
 $compiledLogs = $null
