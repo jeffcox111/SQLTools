@@ -72,5 +72,7 @@ END
 
 drop table #MissingJobs
 
-rollback tran
+--rollback tran
+commit tran
+									  
 
