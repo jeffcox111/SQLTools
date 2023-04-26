@@ -78,6 +78,7 @@ foreach($m in $sourceMechs)
         if($isDupe -eq $false) { $Lances.Add($lance) }
     }    
 }
+$Lances.Count
 
 foreach($m in $sourceMechs)
 {    
@@ -104,68 +105,69 @@ foreach($m in $sourceMechs)
         }
     }    
 }
-
-foreach($m in $sourceMechs)
-{    
-    foreach($m2 in $sourceMechs)
-    {
-        foreach($m3 in $sourceMechs)
-        {
-            foreach($m4 in $sourceMechs)
-            {
-                $lance = New-Object Lance
-                $lance.AddMech($m)
-                $lance.AddMech($m2)
-                $lance.AddMech($m3)
-                $lance.AddMech($m4)
-                $isDupe = $false
-                foreach($l in $Lances)
-                {
-                    if($l.Mechs.Contains($m) -and $l.Mechs.Contains($m2) -and $l.Mechs.Contains($m3) -and $l.Mechs.Contains($m4)) 
-                    { 
-                        $isDupe = $true
-                        break;
-                    }            
-                }
-            
-                if($isDupe -eq $false) { $Lances.Add($lance) }
-            }
-        }
-    }    
-}
-
-foreach($m in $sourceMechs)
-{    
-    foreach($m2 in $sourceMechs)
-    {
-        foreach($m3 in $sourceMechs)
-        {
-            foreach($m4 in $sourceMechs)
-            {
-                foreach($m5 in $sourceMechs)
-                {
-                    $lance = New-Object Lance
-                    $lance.AddMech($m)
-                    $lance.AddMech($m2)
-                    $lance.AddMech($m3)
-                    $lance.AddMech($m4)
-                    $lance.AddMech($m5)
-                    $isDupe = $false
-                    foreach($l in $Lances)
-                    {
-                        if($l.Mechs.Contains($m) -and $l.Mechs.Contains($m2) -and $l.Mechs.Contains($m3) -and $l.Mechs.Contains($m4) -and $l.Mechs.Contains($m5)) 
-                        { 
-                            $isDupe = $true
-                            break;
-                        }            
-                    }
-            
-                    if($isDupe -eq $false) { $Lances.Add($lance) }
-                }
-            }
-        }
-    }    
-}
 $Lances.Count
+
+# foreach($m in $sourceMechs)
+# {    
+#     foreach($m2 in $sourceMechs)
+#     {
+#         foreach($m3 in $sourceMechs)
+#         {
+#             foreach($m4 in $sourceMechs)
+#             {
+#                 $lance = New-Object Lance
+#                 $lance.AddMech($m)
+#                 $lance.AddMech($m2)
+#                 $lance.AddMech($m3)
+#                 $lance.AddMech($m4)
+#                 $isDupe = $false
+#                 foreach($l in $Lances)
+#                 {
+#                     if($l.Mechs.Contains($m) -and $l.Mechs.Contains($m2) -and $l.Mechs.Contains($m3) -and $l.Mechs.Contains($m4)) 
+#                     { 
+#                         $isDupe = $true
+#                         break;
+#                     }            
+#                 }
+            
+#                 if($isDupe -eq $false) { $Lances.Add($lance) }
+#             }
+#         }
+#     }    
+# }
+
+# foreach($m in $sourceMechs)
+# {    
+#     foreach($m2 in $sourceMechs)
+#     {
+#         foreach($m3 in $sourceMechs)
+#         {
+#             foreach($m4 in $sourceMechs)
+#             {
+#                 foreach($m5 in $sourceMechs)
+#                 {
+#                     $lance = New-Object Lance
+#                     $lance.AddMech($m)
+#                     $lance.AddMech($m2)
+#                     $lance.AddMech($m3)
+#                     $lance.AddMech($m4)
+#                     $lance.AddMech($m5)
+#                     $isDupe = $false
+#                     foreach($l in $Lances)
+#                     {
+#                         if($l.Mechs.Contains($m) -and $l.Mechs.Contains($m2) -and $l.Mechs.Contains($m3) -and $l.Mechs.Contains($m4) -and $l.Mechs.Contains($m5)) 
+#                         { 
+#                             $isDupe = $true
+#                             break;
+#                         }            
+#                     }
+            
+#                     if($isDupe -eq $false) { $Lances.Add($lance) }
+#                 }
+#             }
+#         }
+#     }    
+# }
+
 $Lances | % {$_.ToString()} | Out-File .\Lances.csv 
 
